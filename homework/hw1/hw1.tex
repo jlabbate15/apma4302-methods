@@ -25,7 +25,7 @@
 
 A slightly different modification of problem 1.1 from the Beuler textbook.
 
-Modify the code \texttt{expx.c} to compute a well-balanced $N$ term Taylor Polynomial approximation
+Modify the code \texttt{expx.c} to compute a better-balanced $N$ term Taylor Polynomial approximation
 for $e^x$ for both positive and negative values of $x$. The command line should read
 \begin{verbatim}
     $ mpiexec -n nP ./expx -x x -N N 
@@ -39,7 +39,7 @@ The code should have the following properties:
 \item The Taylor polynomial should be computed in parallel using \texttt{nP} processes.
 \item For each process, the work should be roughly $O(N/nP)$.
 \item The code should work for both positive and negative values of \texttt{x}.
-\item The answer should be printed out from process 0 only, and should include the relative error
+\item The answer should be printed out from process 0 only, and should include both the solution and the relative error
 compared to the value computed by the \texttt{exp()} function from the standard C, in multiples of machine precision. 
 \item You can use the constant \texttt{PETSC\_MACHINE\_EPSILON} to get machine precision.
 \end{itemize}
