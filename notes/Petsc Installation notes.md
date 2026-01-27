@@ -7,7 +7,7 @@ Most of these notes reflect instructions for macos (on arm64 architectures).  Yo
 Have installed:
 * Compilers: gcc or Xcode
 * git
-* python 3
+* python 3 (a reasonably recent version, or use anaconda)
 * a package manager 
     * homebrew on macs
     * apt on linux machines
