@@ -45,3 +45,14 @@ Have installed:
 * Start with Ch1 of Beuler (build parallel e)
 * Discuss homework
 
+### Building with additional packages
+
+* For more advances problems we will want some additional packages
+* The installation script apma4302_configure-pkgs-opt.sh will also build
+    * MUMPS (Multi frontal Massively Parallel solver) for parallel sparse direct
+    * METIS/PARMETIS for parallel graph partitioning
+    * HYPRE a robust algebraic multigrid package
+    * petsc4py: python bindings for petsc and for interacting with petsc c codes with python
+    * HDF5:  An advanced parallel and portable IO system for that can be imported in various visualization packages (and python)
+    * Note: the installation script assumes macos after `brew install hdf5-mpi`
+

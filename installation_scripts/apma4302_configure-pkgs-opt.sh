@@ -23,6 +23,8 @@ export PETSC_ARCH=apma4302-pkgs-opt
   --download-hypre \
   --download-scalapack \
   --download-mumps \
-  --download-petsc4py
+  --download-petsc4py \
+  --with-hdf5-dir=$(brew --prefix hdf5-mpi) 
+
 
 echo "Configuration completed successfully!"
