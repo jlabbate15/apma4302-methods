@@ -7,17 +7,14 @@ set -u  # Exit on undefined variable
 echo "Starting APMA 4302 PETSc configuration..."
 
 export PETSC_DIR=$(pwd)
-export PETSC_ARCH=apma4302-pkgs-opt
+export PETSC_ARCH=apma4302-pkgs-debug
 
 ./configure \
   --with-cc=mpicc \
   --with-cxx=mpicxx \
   --with-fc=mpif90 \
-  --with-debugging=0 \
+  --with-debugging=1 \
   --with-shared-libraries=1 \
-  --COPTFLAGS="-O3 -march=native" \
-  --CXXOPTFLAGS="-O3 -march=native" \
-  --FOPTFLAGS="-O3 -march=native" \
   --download-metis \
   --download-parmetis \
   --download-hypre \
