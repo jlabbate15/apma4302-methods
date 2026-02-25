@@ -76,6 +76,7 @@ if __name__ == "__main__":
 
 
     # Part c usage
+    num_procs = 4
     ks = np.array([1,5,10])
     ms = np.linspace(40,1280,32,dtype=int)
     hs = 1/ms
@@ -93,11 +94,17 @@ if __name__ == "__main__":
                 f.write("-ksp_rtol 1.e-8\n")
                 f.write("-ksp_atol 1.e-10\n")
                 f.write("-ksp_monitor\n")
+                f.write("-ksp_type preonly\n")
+                f.write("-pc_type lu\n")
+                f.write("-pc_factor_solver_type mumps\n")
 
             subprocess.run([
+                "mpiexec",
+                "-np",
+                str(num_procs),
                 "./bvp",
                 "-options_file",
-                "options_file"
+                "options_file",
             ])
 
             u = read_hdf5_vec(h5_filename, 'u') 
@@ -105,10 +112,10 @@ if __name__ == "__main__":
             err[j] = np.linalg.norm(u-u_exact)
             j+=1
 
-        ax.plot(ms,err,label='k='+str(k))
+        ax.plot(hs,err,label='k='+str(k))
         i+=1
-    ax.set_title("Convergence of Error as a Function of Number of Nodes")
-    ax.set_xlabel("Number of Nodes")
+    ax.set_title("Convergence of Error as a Function of Grid Spacing")
+    ax.set_xlabel("Grid Spacing")
     ax.set_ylabel(r'$|u-u_{exact}|$')
     ax.legend()
-    plt.savefig('convergence_ms.png')
+    plt.savefig('convergence_4f4.png')
