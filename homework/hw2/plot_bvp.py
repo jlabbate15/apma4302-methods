@@ -1,5 +1,7 @@
 import numpy as np
 from petsc4py import PETSc
+import subprocess
+import matplotlib.pyplot as plt
 
 def read_hdf5_vec(filename, vec_name):
     """
@@ -60,12 +62,53 @@ def plot_bvp_solution(x, u_numeric, u_exact):
     plt.show()
 
 if __name__ == "__main__":
+
+
     # Example usage
     # read numerical and exact solutions from HDF5 files
     h5_filename = 'bvp_solution.h5'  # Update with your actual filename
-    u = read_hdf5_vec(h5_filename, 'u') 
-    u_exact = read_hdf5_vec(h5_filename, 'uexact')
+    # u = read_hdf5_vec(h5_filename, 'u') 
+    # u_exact = read_hdf5_vec(h5_filename, 'uexact')
 
-    x = np.linspace(0, 1, len(u))  
+    # x = np.linspace(0, 1, len(u))  
     
-    plot_bvp_solution(x, u, u_exact)
+    # plot_bvp_solution(x, u, u_exact)
+
+
+    # Part c usage
+    ks = np.array([1,5,10])
+    ms = np.linspace(40,1280,32,dtype=int)
+    hs = 1/ms
+    err = np.zeros([len(ms)])
+    i=0
+    fig,ax = plt.subplots()
+    for k in ks:
+        j=0
+        for m in ms:
+            with open("options_file", "w") as f:
+                f.write("-bvp_m "+str(m)+"\n")
+                f.write("-bvp_gamma 0.\n")
+                f.write("-bvp_k "+str(k)+"\n")
+                f.write("-bvp_c 3.\n")
+                f.write("-ksp_rtol 1.e-8\n")
+                f.write("-ksp_atol 1.e-10\n")
+                f.write("-ksp_monitor\n")
+
+            subprocess.run([
+                "./bvp",
+                "-options_file",
+                "options_file"
+            ])
+
+            u = read_hdf5_vec(h5_filename, 'u') 
+            u_exact = read_hdf5_vec(h5_filename, 'uexact')
+            err[j] = np.linalg.norm(u-u_exact)
+            j+=1
+
+        ax.plot(ms,err,label='k='+str(k))
+        i+=1
+    ax.set_title("Convergence of Error as a Function of Number of Nodes")
+    ax.set_xlabel("Number of Nodes")
+    ax.set_ylabel(r'$|u-u_{exact}|$')
+    ax.legend()
+    plt.savefig('convergence_ms.png')
