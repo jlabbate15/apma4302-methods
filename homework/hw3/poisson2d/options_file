@@ -1,8 +1,9 @@
 # options file for default cg solver
 -da_grid_x 9
 -da_grid_y 9
+-da_refine 3
 -ksp_type cg 
--pc_type icc
+-pc_type gamg
 -ksp_rtol 1.e-8
 -ksp_atol 1.e-10
 -ksp_monitor

@@ -5,13 +5,16 @@ static char help[] = "A structured-grid Poisson solver using DMDA+KSP.\n\n";
 extern PetscErrorCode formMatrix(DM, Mat);
 extern PetscErrorCode formExact(DM, Vec);
 extern PetscErrorCode formRHS(DM, Vec);
+extern PetscErrorCode formF(DM, Vec);
 extern PetscErrorCode formRankMap(DM, Vec, PetscInt);
+extern PetscReal  ufunction(PetscReal, PetscReal);
+extern PetscReal  d2ufunction(PetscReal, PetscReal);
 
 //STARTMAIN
 int main(int argc,char **args) {
     DM            da;
     Mat           A;
-    Vec           b,u,uexact, rankmap;
+    Vec           b,u,uexact, rankmap, f;
     KSP           ksp;
     PetscReal     errnorm;
     DMDALocalInfo info;
@@ -40,10 +43,12 @@ int main(int argc,char **args) {
     PetscCall(VecDuplicate(b,&u));
     PetscCall(VecDuplicate(b,&uexact));
     PetscCall(VecDuplicate(b,&rankmap));
+    PetscCall(VecDuplicate(b,&f));
 
 
     // fill vectors and assemble linear system
     PetscCall(formExact(da,uexact));
+    PetscCall(formF(da,f));
     PetscCall(formRHS(da,b));
     PetscCall(formMatrix(da,A));
     PetscCall(formRankMap(da,rankmap,(PetscInt) rank));
@@ -58,10 +63,12 @@ int main(int argc,char **args) {
     PetscCall(PetscViewerVTKOpen(PETSC_COMM_WORLD,"poisson.vtr",FILE_MODE_WRITE,&viewer));
     PetscCall(PetscObjectSetName((PetscObject) uexact, "uexact"));
     PetscCall(PetscObjectSetName((PetscObject) u, "u"));
-    PetscCall(PetscObjectSetName((PetscObject) b, "rhs"));  
+    PetscCall(PetscObjectSetName((PetscObject) f, "f"));
+    PetscCall(PetscObjectSetName((PetscObject) b, "b"));  
     PetscCall(PetscObjectSetName((PetscObject) rankmap, "rankmap"));
     PetscCall(VecView(uexact, viewer));
     PetscCall(VecView(u, viewer));
+    PetscCall(VecView(f, viewer));
     PetscCall(VecView(b, viewer));
     PetscCall(VecView(rankmap, viewer));
     PetscCall(DMView(da, viewer));
@@ -79,6 +86,7 @@ int main(int argc,char **args) {
     PetscCall(VecDestroy(&u));
     PetscCall(VecDestroy(&uexact));
     PetscCall(VecDestroy(&b));
+    PetscCall(VecDestroy(&f));
     PetscCall(VecDestroy(&rankmap));
     PetscCall(MatDestroy(&A));
     PetscCall(KSPDestroy(&ksp));
@@ -87,6 +95,26 @@ int main(int argc,char **args) {
     return 0;
 }
 //ENDMAIN
+
+// exact solution and its Laplacian for off-center Gaussian bump
+PetscReal ufunction(PetscReal x, PetscReal y) {
+    PetscReal sigma = 0.3;
+    PetscReal x0 = 0.65, y0 = 0.65;
+    PetscReal r2 = (x-x0)*(x-x0) + (y-y0)*(y-y0);
+    PetscReal amp = 1.0;
+    return amp * PetscExpReal( - r2  / (sigma*sigma) );
+    //return x*x * (1.0 - x*x) * y*y * (1.0 - y*y);
+}
+
+PetscReal d2ufunction(PetscReal x, PetscReal y) {
+    PetscReal sigma = 0.3;
+    PetscReal x0 = 0.65, y0 = 0.65;
+    PetscReal amp = 1.0;
+    PetscReal r2 = (x-x0)*(x-x0) + (y-y0)*(y-y0);
+    PetscReal expterm = PetscExpReal( - r2 / (sigma*sigma) );
+    return amp * expterm * 4.0/(sigma * sigma) * ( r2/(sigma*sigma) - 1.0 );
+    //return 2.0 * ( (1.0 - 6.0*x*x) * y*y * (1.0 - y*y) + (1.0 - 6.0*y*y) * x*x * (1.0 - x*x) );
+}
 
 //STARTMATRIX
 PetscErrorCode formMatrix(DM da, Mat A) {
@@ -107,7 +135,7 @@ PetscErrorCode formMatrix(DM da, Mat A) {
             if (i==0 || i==info.mx-1 || j==0 || j==info.my-1) {
                 v[0] = 1.0;      // on boundary: trivial equation
             } else {
-                v[0] = 2*(hy/hx + hx/hy); // interior: build a row
+                v[0] = 2.*(hy/hx + hx/hy); // interior: build a row
                 if (i-1 > 0) {
                     col[ncols].j = j;    col[ncols].i = i-1;
                     v[ncols++] = -hy/hx;
@@ -147,7 +175,7 @@ PetscErrorCode formExact(DM da, Vec uexact) {
         y = j * hy;
         for (i = info.xs; i < info.xs+info.xm; i++) {
             x = i * hx;
-            auexact[j][i] = x*x * (1.0 - x*x) * y*y * (y*y - 1.0);
+            auexact[j][i] = ufunction(x,y);
         }
     }
     PetscCall(DMDAVecRestoreArray(da, uexact, &auexact));
@@ -158,26 +186,67 @@ PetscErrorCode formExact(DM da, Vec uexact) {
 //STARTRHS
 PetscErrorCode formRHS(DM da, Vec b) {
     PetscInt       i, j;
-    PetscReal      hx, hy, x, y, f, **ab;
+    PetscReal      hx, hy, x, y, **ab;
     DMDALocalInfo  info;
 
     PetscCall(DMDAGetLocalInfo(da,&info));
     hx = 1.0/(info.mx-1);  hy = 1.0/(info.my-1);
     PetscCall(DMDAVecGetArray(da, b, &ab));
-    for (j=info.ys; j<info.ys+info.ym; j++) {
+    for (j = info.ys; j < info.ys + info.ym; j++)
+    {
         y = j * hy;
-        for (i=info.xs; i<info.xs+info.xm; i++) {
+        for (i = info.xs; i < info.xs + info.xm; i++)
+        {
             x = i * hx;
-            if (i==0 || i==info.mx-1 || j==0 || j==info.my-1) {
-                ab[j][i] = 0.0;  // on boundary: 1*u = 0
-            } else {
-                f = 2.0 * ( (1.0 - 6.0*x*x) * y*y * (1.0 - y*y)
-                    + (1.0 - 6.0*y*y) * x*x * (1.0 - x*x) );
-                ab[j][i] = hx * hy * f;
+            if (i == 0 || i == info.mx - 1 || j == 0 || j == info.my - 1)
+            {
+                ab[j][i] = ufunction(x, y); // on boundary: 1*u = uexact(x,y)
+            }
+            else
+            {
+                ab[j][i] = -hx * hy * d2ufunction(x, y); // interior: f(x_i,y_j)
+                // // lift dirichlet BCs into interior equations
+                if (i == 1)
+                {
+                    ab[j][i] += hy / hx * ufunction(x - hx, y);
+                }
+                if (i == info.mx - 2)
+                {
+                    ab[j][i] += hy / hx * ufunction(x + hx, y);
+                }
+                if (j == 1)
+                {
+                    ab[j][i] += hx / hy * ufunction(x, y - hy);
+                }
+                if (j == info.my - 2)
+                {
+                    ab[j][i] += hx / hy * ufunction(x, y + hy);
+                }
             }
         }
     }
     PetscCall(DMDAVecRestoreArray(da, b, &ab));
+    return 0;
+}
+//ENDRHS
+
+//STARTf
+PetscErrorCode  formF(DM da, Vec f) {
+    PetscInt       i, j;
+    PetscReal      hx, hy, x, y, **af;
+    DMDALocalInfo  info;
+
+    PetscCall(DMDAGetLocalInfo(da,&info));
+    hx = 1.0/(info.mx-1);  hy = 1.0/(info.my-1);
+    PetscCall(DMDAVecGetArray(da, f, &af));
+    for (j=info.ys; j<info.ys+info.ym; j++) {
+        y = j * hy;
+        for (i=info.xs; i<info.xs+info.xm; i++) {
+            x = i * hx;
+            af[j][i] =  -d2ufunction(x,y);  // interior: f(x_i,y_j)
+        }
+    }
+    PetscCall(DMDAVecRestoreArray(da, f, &af));
     return 0;
 }
 //ENDRHS
