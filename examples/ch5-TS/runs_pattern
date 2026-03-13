@@ -1,0 +1,4 @@
+python run_ts.py -e pattern -n 4 -o options_file -f sol_pattern_4 -- -da_refine 4
+python run_ts.py -e pattern -n 4 -o options_file -f sol_pattern_5 -- -da_refine 5
+python run_ts.py -e pattern -n 4 -o options_file -f sol_pattern_6 -- -da_refine 6
+python run_ts.py -e pattern -n 4 -o options_file -f sol_pattern_7 -- -da_refine 7
