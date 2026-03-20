@@ -1,0 +1,4 @@
+python run_ts.py -e heat -n 2 -o options_file_heat -f sol_heat_bdf
+python run_ts.py -e heat -n 2 -o options_file_heat -f sol_heat_cn -- -ts_type cn -ts_dt 0.01 -ts_max_time 1.
+python run_ts.py -e heat -n 2 -o options_file_heat -f sol_heat_beuler -- -ts_type beuler -ts_dt 0.01 -ts_max_time 1.
+python run_ts.py -e heat -n 2 -o options_file_heat -f sol_heat_rk -- -ts_type rk -ts_rk_type 3bs -ts_max_time 0.01

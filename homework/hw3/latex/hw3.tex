@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{sourcecodepro}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+% Header setup
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Name: \underline{\hspace{3cm}}}
+\lhead{APMA 4302 - Methods}
+\cfoot{\thepage}
+
+\begin{document}
+\lstset{basicstyle=\ttfamily}
+
+\title{APMA 4302 Methods - Homework 3: Non-linear solver for reaction-diffusion equations}
+\author{Marc Spiegelman}
+\date{\today}
+\maketitle
+
+Here we will solve the nonlinear reaction-diffusion equation
+\begin{displaymath}
+  -\mathbf{\nabla}^2 u + \gamma u^p = f
+\end{displaymath}
+on the unit square with  non-homogeneous Dirichlet boundary conditions. Here $\gamma$ is a positive constant and $p>1$ is an integer. The right-hand side $f$ will be determined by the method of manufactured solutions, assuming the exact solution is given by
+\begin{displaymath}
+  u_{exact}(x,y) = A \exp\left(-\frac{(x-x_0)^2+(y-y_0)^2}{\sigma^2}\right),
+\end{displaymath}
+where $(x_0,y_0)$ is a point in the unit square and $\sigma$ is a positive constant controlling the width of the Gaussian of maximum amplitude $A$.
+
+To help with this exercise, I have provided the code \texttt{poisson2d.c} in the \texttt{apma4302-methods} repository which solves the linear version of this problem (i.e. $\gamma=0$) as the discrete problem $A\mathbf{x}=\mathbf{b}$ as well as providing \texttt{VTK} output for visualizing in \href{https://www.paraview.org/}{ParaView}.
+
+Do the following:
+\begin{enumerate}
+  \item (\textbf{5 pts}) Use finite differences to discretize the nonlinear PDE and write down the resulting nonlinear system of equations  in the form $F(\mathbf{u})=0$. Include auxiliary equations for non-homogeneous Dirichlet boundary conditions.
+  \item (\textbf{5 pts}) Provide equations for elements of the  Jacobian matrix $J_{i,j}(\mathbf{u})=\frac{\partial F_i}{\partial u_j}$.
+  \item (\textbf{20 pts}) Modify the code \texttt{reaction.c} in the \texttt{p4pdes} repository to solve the nonlinear problem using Newton's method with the \texttt{PETSc SNES} objects. Your code should have the following properties.
+    \begin{enumerate}
+      \item It should run with the interface
+    \begin{verbatim}
+    mpirun -n <num_procs> ./reaction2d  -rct_p <p>
+            -rct_gamma <gamma> -rct_linear_f
+    \end{verbatim}
+        plus standard petsc command-line options.
+
+        The option \texttt{-rct\_linear\_f} should be a boolean flag such that if true, sets the right-hand side to be
+        \begin{displaymath}
+          f(x,y) = - \mathbf{\nabla}^2 u_{exact}
+        \end{displaymath}
+        (i.e. the RHS for the linear problem) and if false, sets the right-hand side to be the full nonlinear RHS for the manufactured solution
+        \begin{displaymath}
+          f(x,y) = - \mathbf{\nabla}^2 u_{exact} + \gamma u_{exact}^p
+        \end{displaymath}
+        You can use the code in \texttt{poisson2d.c} to calculate $u_{exact}$ and its derivatives.
+      \item Boundary conditions should be $u_{exact}$ on all boundaries, independent of the value of \texttt{-rct\_linear\_f}.
+      \item It should include routines to compute both the nonlinear residual $F(\mathbf{u})$ and the Jacobian matrix $J(\mathbf{u})$.
+      \item It should also be able to run with Finite difference jacobians using the options \texttt{-snes\_fd}, \texttt{-snes\_fd\_color}, \texttt{-snes\_mf} and \texttt{-snes\_mf\_operator} and should give the same results as the user-provided Jacobian. (you can use the option \texttt{-snes\_test\_jacobians} to check.
+        \item It should output the solution in \texttt{VTK} format for visualization in \texttt{ParaView}.
+      \end{enumerate}
+    \item (\textbf{5 pts}) Run your code with $\gamma=0$ for a $65 \times 65$ grid and show that the linear and nonlinear solvers produce the same solution within error.  Find an appropriate set of linear solver options and stopping conditions so that the non-linear solver converges to a residual norm $\|F(\mathbf{u})\|_2 < 10^{-10}$ in one newton iteration. Report the number of linear iterations taken at each Newton step and the final \emph{relative error}  $\|\mathbf{u}-\mathbf{u}_{exact}\|_2/\|\mathbf{u}_{exact}\|_2$. (hint: some useful command line options include \texttt{-ksp\_monitor}, \texttt{-snes\_monitor}, \texttt{-ksp\_rtol} and \texttt{-ksp\_atol}). Feel free to experiment with different linear solvers and preconditioners (including sparse-direct solvers), but your code should run in parallel. Save your preferred options in a file \texttt{options\_file\_gamma0} and include it with your submission.
+    \item (\textbf{2 pts}) Show that you get the same solution with the finite-difference Jacobian and report any differences in convergence behavior or final error. Include the command line options you used to run with the finite-difference Jacobian in a file \texttt{options\_file\_fd} and include it with your submission. Compare the run times for the user-provided Jacobian and the finite-difference Jacobian and report any differences. (hint: use \texttt{-log\_view} to get detailed timing information).
+    \item (\textbf{5 pts}) Now set $\gamma=100$ and $p=3$ and run the nonlinear solver with the same stopping conditions as before. Report the number of Newton iterations taken, the number of linear iterations taken at each Newton step and the final \emph{relative error} $\|\mathbf{u}-\mathbf{u}_{exact}\|_2/\|\mathbf{u}_{exact}\|_2$. Plot the convergence history of the nonlinear residual norm $\|F(\mathbf{u})\|_2$.
+    \item (\textbf{5 pts}) rerun the problem with \texttt{-rct\_linear\_f} and visualize the solution for $\gamma=100$ and $p=3$ in \texttt{ParaView} and include a screenshot of the solution in your submission. Describe how the nonlinearity has affected the solution compared to the linear case $\gamma=0$.
+    \item (\textbf{10 pts}) \textbf{Performance and scaling} make a table (and/or plot) comparing
+      \begin{itemize}
+        \item run times (use \texttt{-log\_view})
+        \item  number of Newton iterations
+        \item relative norm of the error $\|\mathbf{u}-\mathbf{u}_{exact}\|_2/\|\mathbf{u}_{exact}\|_2$
+      \end{itemize}
+      for the non-linear problem for \texttt{-da\_refine} $2,3,4,5,6$ (i.e. grid sizes of $33\times 33$, to $513\times 513$) and 1,2 and 4 processors. I may actually provide a script for this part. Comment on the scaling of the code with respect to both problem size and number of processors.
+  \end{enumerate}
+
+  \end{document}
