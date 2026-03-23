@@ -4,7 +4,7 @@
 -da_refine 3
 -ksp_type cg 
 -pc_type gamg
--ksp_rtol 1.e-8
--ksp_atol 1.e-10
+-ksp_rtol 1.e-12
+-ksp_atol 1.e-14
 -ksp_monitor
 

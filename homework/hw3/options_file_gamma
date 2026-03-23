@@ -1,0 +1,18 @@
+# options file for reaction2d
+
+# grid size
+-da_grid_x 65
+-da_grid_y 65
+
+# setup specifics (must include rct_ prefix — matches PetscOptionsBegin(..., "rct_", ...))
+-rct_gamma 0
+-rct_linear_f false
+# -rct_p 3
+
+# linear solver specifics
+-ksp_rtol 1.e-12
+-ksp_atol 1.e-14
+-ksp_monitor
+
+# non-linear solver specifics (SNES)
+-snes_monitor
