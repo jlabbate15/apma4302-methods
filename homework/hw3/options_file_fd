@@ -1,0 +1,20 @@
+# Problem 5: finite-difference Jacobian (compare to analytic J in code).
+# Run:  mpirun -n 4 ./reaction2d -options_file options_file_fd
+
+-da_grid_x 65
+-da_grid_y 65
+
+-rct_gamma 0
+-rct_linear_f true
+
+-ksp_rtol 1.e-12
+-ksp_atol 1.e-14
+-ksp_monitor
+
+-snes_monitor
+
+# Finite-difference Jacobian (omit this flag when comparing analytic Jacobian / runtime)
+-snes_fd
+
+# Timing for writeup (Problem 5): compare with a run without -log_view or save to file
+-log_view

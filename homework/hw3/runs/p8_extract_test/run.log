@@ -1,0 +1,14 @@
+[paullabs-MacBook-Air.local:26465] pmix_ifinit: getifaddrs() failed with error=1
+[paullabs-MacBook-Air.local:26465] pmix_ifinit: getifaddrs() failed with error=1
+[paullabs-MacBook-Air.local:26465] ptl_tool: problems getting address for index 0 (kernel index -1)
+--------------------------------------------------------------------------
+You requested support for tool connections, but no available
+interfaces were found after applying any include or exclude directives:
+
+  Include:    NULL
+  Exclude:    NULL
+  Available:  
+
+Please adjust your include or exclude to allow selection of an
+available interface.
+--------------------------------------------------------------------------

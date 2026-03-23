@@ -72,7 +72,24 @@ int main(int argc,char **args) {
 
   PetscCall(DMDAGetLocalInfo(da,&info));
   PetscCall(formExact(da,uexact));
-  PetscCall(VecCopy(uexact, u)); // copy uexact into u
+
+  // initial guess for solution
+  //   PetscCall(VecCopy(uexact, u)); // copy uexact into u, which is the initial guess for the solution
+  { // bracketed statements are limited to their own scope
+    PetscInt  i, j;
+    PetscReal **au, **auex;
+    PetscCall(VecSet(u, 0.0));
+    PetscCall(DMDAVecGetArray(da, u, &au));
+    PetscCall(DMDAVecGetArray(da, uexact, &auex));
+    for (j = info.ys; j < info.ys + info.ym; j++) {
+      for (i = info.xs; i < info.xs + info.xm; i++) {
+        if (i == 0 || i == info.mx - 1 || j == 0 || j == info.my - 1) au[j][i] = auex[j][i];
+      }
+    }
+    PetscCall(DMDAVecRestoreArray(da, uexact, &auex));
+    PetscCall(DMDAVecRestoreArray(da, u, &au));
+  }
+
   PetscCall(formf(da,f,&user));
 
   PetscCall(SNESCreate(PETSC_COMM_WORLD,&snes));

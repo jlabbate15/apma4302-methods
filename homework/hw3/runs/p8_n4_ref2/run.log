@@ -1,0 +1,532 @@
+  0 SNES Function norm 1.610111799600e+00
+    0 KSP Residual norm 1.679275726553e+00
+    1 KSP Residual norm 1.316184565930e+00
+    2 KSP Residual norm 9.884880334317e-01
+    3 KSP Residual norm 7.479861158709e-01
+    4 KSP Residual norm 5.968885502924e-01
+    5 KSP Residual norm 5.043680631975e-01
+    6 KSP Residual norm 4.429031722791e-01
+    7 KSP Residual norm 3.666199019487e-01
+    8 KSP Residual norm 3.034952762272e-01
+    9 KSP Residual norm 2.463935265911e-01
+   10 KSP Residual norm 2.018827314334e-01
+   11 KSP Residual norm 1.540588747609e-01
+   12 KSP Residual norm 1.065102258160e-01
+   13 KSP Residual norm 6.998227565319e-02
+   14 KSP Residual norm 4.149993714124e-02
+   15 KSP Residual norm 2.314735142790e-02
+   16 KSP Residual norm 1.252512936465e-02
+   17 KSP Residual norm 6.034842023208e-03
+   18 KSP Residual norm 3.165159127170e-03
+   19 KSP Residual norm 1.717810499497e-03
+   20 KSP Residual norm 1.006356909797e-03
+   21 KSP Residual norm 6.387506785926e-04
+   22 KSP Residual norm 3.696099831466e-04
+   23 KSP Residual norm 2.068929755311e-04
+   24 KSP Residual norm 1.233289275096e-04
+   25 KSP Residual norm 7.427293149977e-05
+   26 KSP Residual norm 4.354368090099e-05
+   27 KSP Residual norm 2.238107709576e-05
+   28 KSP Residual norm 1.056978691983e-05
+   29 KSP Residual norm 4.949298432455e-06
+   30 KSP Residual norm 2.500679479168e-06
+   31 KSP Residual norm 1.490922031616e-06
+   32 KSP Residual norm 7.426640825817e-07
+   33 KSP Residual norm 3.877587897822e-07
+   34 KSP Residual norm 2.600375865882e-07
+   35 KSP Residual norm 2.087191331473e-07
+   36 KSP Residual norm 1.851149330796e-07
+   37 KSP Residual norm 1.640381877822e-07
+   38 KSP Residual norm 1.438684916354e-07
+   39 KSP Residual norm 1.184318276651e-07
+   40 KSP Residual norm 9.800850646735e-08
+   41 KSP Residual norm 7.790992344334e-08
+   42 KSP Residual norm 6.071146660198e-08
+   43 KSP Residual norm 4.687648951691e-08
+   44 KSP Residual norm 3.546950300973e-08
+   45 KSP Residual norm 2.581666302666e-08
+   46 KSP Residual norm 1.619220514367e-08
+   47 KSP Residual norm 1.104095790550e-08
+   48 KSP Residual norm 7.468358752805e-09
+   49 KSP Residual norm 4.446299071676e-09
+   50 KSP Residual norm 2.650635700419e-09
+   51 KSP Residual norm 1.521664920561e-09
+   52 KSP Residual norm 7.924494506472e-10
+   53 KSP Residual norm 4.564566615805e-10
+   54 KSP Residual norm 2.537494121123e-10
+   55 KSP Residual norm 1.412587585349e-10
+   56 KSP Residual norm 7.814156021821e-11
+   57 KSP Residual norm 4.799096613825e-11
+   58 KSP Residual norm 3.138800516682e-11
+   59 KSP Residual norm 1.870780028209e-11
+   60 KSP Residual norm 9.986650888807e-12
+   61 KSP Residual norm 5.935924094362e-12
+   62 KSP Residual norm 3.768522525024e-12
+   63 KSP Residual norm 2.562400737261e-12
+   64 KSP Residual norm 1.825802788343e-12
+   65 KSP Residual norm 1.232847731167e-12
+  1 SNES Function norm 1.438928460257e+00
+    0 KSP Residual norm 1.467586799649e+00
+    1 KSP Residual norm 1.105028034482e+00
+    2 KSP Residual norm 7.706525687221e-01
+    3 KSP Residual norm 5.505388566633e-01
+    4 KSP Residual norm 4.155005409864e-01
+    5 KSP Residual norm 3.344611969489e-01
+    6 KSP Residual norm 2.814136200852e-01
+    7 KSP Residual norm 2.227214590287e-01
+    8 KSP Residual norm 1.775729112245e-01
+    9 KSP Residual norm 1.393168960512e-01
+   10 KSP Residual norm 1.115960467573e-01
+   11 KSP Residual norm 8.355333946454e-02
+   12 KSP Residual norm 5.641874459274e-02
+   13 KSP Residual norm 3.665339845581e-02
+   14 KSP Residual norm 2.174122639741e-02
+   15 KSP Residual norm 1.203716347513e-02
+   16 KSP Residual norm 6.379929940424e-03
+   17 KSP Residual norm 3.016393786792e-03
+   18 KSP Residual norm 1.570456235457e-03
+   19 KSP Residual norm 8.040468984128e-04
+   20 KSP Residual norm 4.372149492869e-04
+   21 KSP Residual norm 2.558635222999e-04
+   22 KSP Residual norm 1.370926190181e-04
+   23 KSP Residual norm 7.048437017073e-05
+   24 KSP Residual norm 4.001213264505e-05
+   25 KSP Residual norm 2.405235300793e-05
+   26 KSP Residual norm 1.536495873032e-05
+   27 KSP Residual norm 8.809780023508e-06
+   28 KSP Residual norm 4.609134615725e-06
+   29 KSP Residual norm 2.211245628620e-06
+   30 KSP Residual norm 1.086464660188e-06
+   31 KSP Residual norm 6.339475304828e-07
+   32 KSP Residual norm 3.275971016063e-07
+   33 KSP Residual norm 1.811290631747e-07
+   34 KSP Residual norm 1.256853020097e-07
+   35 KSP Residual norm 9.796972836109e-08
+   36 KSP Residual norm 8.179772306534e-08
+   37 KSP Residual norm 6.822829074790e-08
+   38 KSP Residual norm 5.679280680619e-08
+   39 KSP Residual norm 4.557021572705e-08
+   40 KSP Residual norm 3.636836226852e-08
+   41 KSP Residual norm 2.774292471758e-08
+   42 KSP Residual norm 2.008359527033e-08
+   43 KSP Residual norm 1.465633586319e-08
+   44 KSP Residual norm 1.058706478457e-08
+   45 KSP Residual norm 7.583518244549e-09
+   46 KSP Residual norm 4.751457370885e-09
+   47 KSP Residual norm 3.228733971555e-09
+   48 KSP Residual norm 2.037083405530e-09
+   49 KSP Residual norm 1.090018428947e-09
+   50 KSP Residual norm 6.071357709403e-10
+   51 KSP Residual norm 3.300824995898e-10
+   52 KSP Residual norm 1.752568012641e-10
+   53 KSP Residual norm 1.005231398420e-10
+   54 KSP Residual norm 5.466936175298e-11
+   55 KSP Residual norm 2.912886323291e-11
+   56 KSP Residual norm 1.561521840764e-11
+   57 KSP Residual norm 9.075742916311e-12
+   58 KSP Residual norm 5.862185289356e-12
+   59 KSP Residual norm 3.604162977235e-12
+   60 KSP Residual norm 1.981407765325e-12
+   61 KSP Residual norm 1.238441591624e-12
+  2 SNES Function norm 1.281988831604e+00
+    0 KSP Residual norm 1.264432591943e+00
+    1 KSP Residual norm 8.961834746299e-01
+    2 KSP Residual norm 5.683694235845e-01
+    3 KSP Residual norm 3.806609314345e-01
+    4 KSP Residual norm 2.693838670845e-01
+    5 KSP Residual norm 2.046734894062e-01
+    6 KSP Residual norm 1.637366097807e-01
+    7 KSP Residual norm 1.238155222577e-01
+    8 KSP Residual norm 9.514911847081e-02
+    9 KSP Residual norm 7.254415805089e-02
+   10 KSP Residual norm 5.725425786503e-02
+   11 KSP Residual norm 4.234238710459e-02
+   12 KSP Residual norm 2.807244041470e-02
+   13 KSP Residual norm 1.819460568345e-02
+   14 KSP Residual norm 1.086953248792e-02
+   15 KSP Residual norm 5.947755834128e-03
+   16 KSP Residual norm 3.080595343634e-03
+   17 KSP Residual norm 1.451979723215e-03
+   18 KSP Residual norm 7.584940556330e-04
+   19 KSP Residual norm 3.718559555979e-04
+   20 KSP Residual norm 1.911828111679e-04
+   21 KSP Residual norm 1.031113351740e-04
+   22 KSP Residual norm 4.924100547063e-05
+   23 KSP Residual norm 2.207356314653e-05
+   24 KSP Residual norm 1.148389133382e-05
+   25 KSP Residual norm 6.652810926726e-06
+   26 KSP Residual norm 4.429238940656e-06
+   27 KSP Residual norm 2.779484467896e-06
+   28 KSP Residual norm 1.633375950571e-06
+   29 KSP Residual norm 8.306211922959e-07
+   30 KSP Residual norm 3.915217963918e-07
+   31 KSP Residual norm 2.247565866526e-07
+   32 KSP Residual norm 1.111684545176e-07
+   33 KSP Residual norm 6.126806357601e-08
+   34 KSP Residual norm 3.969280273183e-08
+   35 KSP Residual norm 2.735856718553e-08
+   36 KSP Residual norm 1.698897420903e-08
+   37 KSP Residual norm 1.003197215175e-08
+   38 KSP Residual norm 5.755014755716e-09
+   39 KSP Residual norm 3.341723532162e-09
+   40 KSP Residual norm 2.191319558942e-09
+   41 KSP Residual norm 1.460871337582e-09
+   42 KSP Residual norm 9.562174690411e-10
+   43 KSP Residual norm 6.550896839562e-10
+   44 KSP Residual norm 4.306873516016e-10
+   45 KSP Residual norm 3.049274774411e-10
+   46 KSP Residual norm 2.304571595165e-10
+   47 KSP Residual norm 1.842781625466e-10
+   48 KSP Residual norm 1.525976736802e-10
+   49 KSP Residual norm 1.139315726186e-10
+   50 KSP Residual norm 7.616609155207e-11
+   51 KSP Residual norm 4.567402039738e-11
+   52 KSP Residual norm 2.558002958038e-11
+   53 KSP Residual norm 1.540239720828e-11
+   54 KSP Residual norm 8.984281376052e-12
+   55 KSP Residual norm 4.898088084256e-12
+   56 KSP Residual norm 2.734299667913e-12
+   57 KSP Residual norm 1.546083958556e-12
+   58 KSP Residual norm 9.288124322724e-13
+  3 SNES Function norm 7.174529932519e-01
+    0 KSP Residual norm 5.723430152405e-01
+    1 KSP Residual norm 3.279803698294e-01
+    2 KSP Residual norm 1.736348255335e-01
+    3 KSP Residual norm 9.423108446194e-02
+    4 KSP Residual norm 5.472368793645e-02
+    5 KSP Residual norm 3.563714704776e-02
+    6 KSP Residual norm 2.372795978017e-02
+    7 KSP Residual norm 1.472618685408e-02
+    8 KSP Residual norm 9.214331808746e-03
+    9 KSP Residual norm 6.058162040686e-03
+   10 KSP Residual norm 4.439074651973e-03
+   11 KSP Residual norm 3.235311075774e-03
+   12 KSP Residual norm 2.399113514793e-03
+   13 KSP Residual norm 1.829509722895e-03
+   14 KSP Residual norm 1.267906697280e-03
+   15 KSP Residual norm 7.408527090750e-04
+   16 KSP Residual norm 4.016554817055e-04
+   17 KSP Residual norm 2.047543595919e-04
+   18 KSP Residual norm 1.089982843379e-04
+   19 KSP Residual norm 5.686669543042e-05
+   20 KSP Residual norm 3.075265334496e-05
+   21 KSP Residual norm 1.661456020567e-05
+   22 KSP Residual norm 9.598562066544e-06
+   23 KSP Residual norm 5.800726261130e-06
+   24 KSP Residual norm 3.235152156503e-06
+   25 KSP Residual norm 1.523716013134e-06
+   26 KSP Residual norm 6.813778891329e-07
+   27 KSP Residual norm 2.811827077755e-07
+   28 KSP Residual norm 1.166950109556e-07
+   29 KSP Residual norm 5.116870762034e-08
+   30 KSP Residual norm 2.451931096982e-08
+   31 KSP Residual norm 1.440560291528e-08
+   32 KSP Residual norm 7.604947029019e-09
+   33 KSP Residual norm 3.450287465984e-09
+   34 KSP Residual norm 1.669204373187e-09
+   35 KSP Residual norm 8.538876969083e-10
+   36 KSP Residual norm 5.059220988265e-10
+   37 KSP Residual norm 3.548001903647e-10
+   38 KSP Residual norm 2.493588746339e-10
+   39 KSP Residual norm 1.572179496331e-10
+   40 KSP Residual norm 1.050078958915e-10
+   41 KSP Residual norm 7.620110689074e-11
+   42 KSP Residual norm 5.778980186108e-11
+   43 KSP Residual norm 4.347318790215e-11
+   44 KSP Residual norm 2.836523747560e-11
+   45 KSP Residual norm 1.897174188433e-11
+   46 KSP Residual norm 1.211594620300e-11
+   47 KSP Residual norm 7.255077428709e-12
+   48 KSP Residual norm 3.620209192737e-12
+   49 KSP Residual norm 1.707326180102e-12
+   50 KSP Residual norm 9.530814001504e-13
+   51 KSP Residual norm 5.554974578129e-13
+  4 SNES Function norm 7.116026977649e-02
+    0 KSP Residual norm 8.306263252678e-02
+    1 KSP Residual norm 2.839626102627e-02
+    2 KSP Residual norm 1.845696780707e-02
+    3 KSP Residual norm 1.055255334335e-02
+    4 KSP Residual norm 6.804310506438e-03
+    5 KSP Residual norm 4.786295788938e-03
+    6 KSP Residual norm 3.537821175389e-03
+    7 KSP Residual norm 2.508892051268e-03
+    8 KSP Residual norm 1.861353564354e-03
+    9 KSP Residual norm 1.337029098995e-03
+   10 KSP Residual norm 9.117491636261e-04
+   11 KSP Residual norm 6.186161857760e-04
+   12 KSP Residual norm 3.977698132757e-04
+   13 KSP Residual norm 2.129306179711e-04
+   14 KSP Residual norm 1.219567153359e-04
+   15 KSP Residual norm 7.080830957381e-05
+   16 KSP Residual norm 3.240343919412e-05
+   17 KSP Residual norm 1.637588944939e-05
+   18 KSP Residual norm 8.436835197945e-06
+   19 KSP Residual norm 3.965719587922e-06
+   20 KSP Residual norm 2.242900121988e-06
+   21 KSP Residual norm 1.428352882872e-06
+   22 KSP Residual norm 7.343532559445e-07
+   23 KSP Residual norm 3.782680742631e-07
+   24 KSP Residual norm 1.873019475863e-07
+   25 KSP Residual norm 7.900002723131e-08
+   26 KSP Residual norm 3.359393861560e-08
+   27 KSP Residual norm 1.395167677309e-08
+   28 KSP Residual norm 6.525363651352e-09
+   29 KSP Residual norm 3.165735046299e-09
+   30 KSP Residual norm 1.333887926133e-09
+   31 KSP Residual norm 7.570268186752e-10
+   32 KSP Residual norm 3.388579434377e-10
+   33 KSP Residual norm 1.554716676179e-10
+   34 KSP Residual norm 7.249417172316e-11
+   35 KSP Residual norm 3.565486808759e-11
+   36 KSP Residual norm 1.778645761251e-11
+   37 KSP Residual norm 1.090181264155e-11
+   38 KSP Residual norm 7.674800372361e-12
+   39 KSP Residual norm 5.854552388237e-12
+   40 KSP Residual norm 4.517073641771e-12
+   41 KSP Residual norm 3.167683005899e-12
+   42 KSP Residual norm 2.203136559061e-12
+   43 KSP Residual norm 1.445873062743e-12
+   44 KSP Residual norm 8.562974619770e-13
+   45 KSP Residual norm 4.576954169468e-13
+   46 KSP Residual norm 2.754986423456e-13
+   47 KSP Residual norm 1.707805589103e-13
+   48 KSP Residual norm 1.037387249220e-13
+   49 KSP Residual norm 5.983301444216e-14
+  5 SNES Function norm 1.658991387369e-03
+    0 KSP Residual norm 1.956529167727e-03
+    1 KSP Residual norm 6.628349391100e-04
+    2 KSP Residual norm 4.467258934517e-04
+    3 KSP Residual norm 2.551188241297e-04
+    4 KSP Residual norm 1.687444591455e-04
+    5 KSP Residual norm 1.210357183389e-04
+    6 KSP Residual norm 9.079234269004e-05
+    7 KSP Residual norm 6.479014881470e-05
+    8 KSP Residual norm 4.768711166604e-05
+    9 KSP Residual norm 3.434360312113e-05
+   10 KSP Residual norm 2.306914637701e-05
+   11 KSP Residual norm 1.536950905822e-05
+   12 KSP Residual norm 9.909486767335e-06
+   13 KSP Residual norm 5.174097578226e-06
+   14 KSP Residual norm 2.980056731262e-06
+   15 KSP Residual norm 1.712438312946e-06
+   16 KSP Residual norm 7.783081469189e-07
+   17 KSP Residual norm 3.981592515639e-07
+   18 KSP Residual norm 2.077004697199e-07
+   19 KSP Residual norm 9.973969104715e-08
+   20 KSP Residual norm 5.617205777989e-08
+   21 KSP Residual norm 3.527997332329e-08
+   22 KSP Residual norm 1.839978932154e-08
+   23 KSP Residual norm 9.752612024760e-09
+   24 KSP Residual norm 4.800778796754e-09
+   25 KSP Residual norm 2.067444619225e-09
+   26 KSP Residual norm 8.500945523663e-10
+   27 KSP Residual norm 3.463189221813e-10
+   28 KSP Residual norm 1.630514662339e-10
+   29 KSP Residual norm 7.908731681449e-11
+   30 KSP Residual norm 3.426991529252e-11
+   31 KSP Residual norm 2.008493908519e-11
+   32 KSP Residual norm 9.161065187066e-12
+   33 KSP Residual norm 4.238473312502e-12
+   34 KSP Residual norm 1.926848557209e-12
+   35 KSP Residual norm 8.931531735259e-13
+   36 KSP Residual norm 4.359267094837e-13
+   37 KSP Residual norm 2.514392024606e-13
+   38 KSP Residual norm 1.633761122606e-13
+   39 KSP Residual norm 1.154147607508e-13
+   40 KSP Residual norm 8.553199538761e-14
+   41 KSP Residual norm 6.093462453451e-14
+   42 KSP Residual norm 4.598292179001e-14
+   43 KSP Residual norm 3.328431078931e-14
+   44 KSP Residual norm 2.168292739562e-14
+   45 KSP Residual norm 1.242764019199e-14
+   46 KSP Residual norm 7.931458457373e-15
+  6 SNES Function norm 9.706198417630e-07
+    0 KSP Residual norm 1.142490044136e-06
+    1 KSP Residual norm 3.796711417972e-07
+    2 KSP Residual norm 2.570011113696e-07
+    3 KSP Residual norm 1.463896039659e-07
+    4 KSP Residual norm 9.792079741908e-08
+    5 KSP Residual norm 7.060810297562e-08
+    6 KSP Residual norm 5.366031030528e-08
+    7 KSP Residual norm 3.817577798452e-08
+    8 KSP Residual norm 2.800529252054e-08
+    9 KSP Residual norm 2.008801877468e-08
+   10 KSP Residual norm 1.336579423916e-08
+   11 KSP Residual norm 8.795528792320e-09
+   12 KSP Residual norm 5.664132769678e-09
+   13 KSP Residual norm 2.907003085296e-09
+   14 KSP Residual norm 1.683807900242e-09
+   15 KSP Residual norm 9.674540262513e-10
+   16 KSP Residual norm 4.366026353811e-10
+   17 KSP Residual norm 2.262503898515e-10
+   18 KSP Residual norm 1.168231200590e-10
+   19 KSP Residual norm 5.648706737727e-11
+   20 KSP Residual norm 3.217014929709e-11
+   21 KSP Residual norm 1.999607345403e-11
+   22 KSP Residual norm 1.046407350928e-11
+   23 KSP Residual norm 5.484157058182e-12
+   24 KSP Residual norm 2.693729785720e-12
+   25 KSP Residual norm 1.176083405738e-12
+   26 KSP Residual norm 4.719775333169e-13
+   27 KSP Residual norm 1.940722858409e-13
+   28 KSP Residual norm 9.132443187553e-14
+   29 KSP Residual norm 4.424249371938e-14
+   30 KSP Residual norm 1.946752076955e-14
+   31 KSP Residual norm 1.151688716183e-14
+   32 KSP Residual norm 5.258838972130e-15
+  7 SNES Function norm 3.298027750358e-13
+on 33 x 33 point grid:  |u-u_exact|_inf = 0.00075367
+on 33 x 33 point grid:  |u-u_exact|_2 / |u_exact|_2 = 0.000809754
+****************************************************************************************************************************************************************
+***                                WIDEN YOUR WINDOW TO 160 CHARACTERS.  Use 'enscript -r -fCourier9' to print this document                                 ***
+****************************************************************************************************************************************************************
+
+------------------------------------------------------------------ PETSc Performance Summary: ------------------------------------------------------------------
+
+./reaction2d on a apma4302-pkgs-opt named paullabs-MacBook-Air.local with 4 processes, by paullab on Mon Mar 23 01:50:30 2026
+Using PETSc Release Version 3.24.3, unknown
+
+                         Max       Max/Min     Avg       Total
+Time (sec):           6.996e-03     1.000   6.996e-03
+Objects:              0.000e+00     0.000   0.000e+00
+Flops:                8.455e+06     1.130   7.963e+06  3.185e+07
+Flops/sec:            1.209e+09     1.129   1.138e+09  4.553e+09
+MPI Msg Count:        8.100e+02     1.005   8.070e+02  3.228e+03
+MPI Msg Len (bytes):  1.182e+05     1.125   1.363e+02  4.399e+05
+MPI Reductions:       8.440e+02     1.000
+
+Flop counting convention: 1 flop = 1 real number operation of type (multiply/divide/add/subtract)
+                            e.g., VecAXPY() for real vectors of length N --> 2N flops
+                            and VecAXPY() for complex vectors of length N --> 8N flops
+
+Summary of Stages:   ----- Time ------  ----- Flop ------  --- Messages ---  -- Message Lengths --  -- Reductions --
+                        Avg     %Total     Avg     %Total    Count   %Total     Avg         %Total    Count   %Total
+ 0:      Main Stage: 6.9937e-03 100.0%  3.1851e+07 100.0%  3.228e+03 100.0%  1.363e+02      100.0%  8.260e+02  97.9%
+
+------------------------------------------------------------------------------------------------------------------------
+See the 'Profiling' chapter of the users' manual for details on interpreting output.
+Phase summary info:
+   Count: number of times phase was executed
+   Time and Flop: Max - maximum over all processes
+                  Ratio - ratio of maximum to minimum over all processes
+   Mess: number of messages sent
+   AvgLen: average message length (bytes)
+   Reduct: number of global reductions
+   Global: entire computation
+   Stage: stages of a computation. Set stages with PetscLogStagePush() and PetscLogStagePop().
+      %T - percent time in this phase         %F - percent flop in this phase
+      %M - percent messages in this phase     %L - percent message lengths in this phase
+      %R - percent reductions in this phase
+   Total Mflop/s: 1e-6 * (sum of flop over all processes)/(max time over all processes)
+------------------------------------------------------------------------------------------------------------------------
+Event                Count      Time (sec)     Flop                              --- Global ---  --- Stage ----  Total
+                   Max Ratio  Max     Ratio   Max  Ratio  Mess   AvgLen  Reduct  %T %F %M %L %R  %T %F %M %L %R Mflop/s
+------------------------------------------------------------------------------------------------------------------------
+
+--- Event Stage 0: Main Stage
+
+BuildTwoSided         11 1.0 5.8000e-05 1.5 0.00e+00 0.0 2.4e+01 4.0e+00 1.1e+01  1  0  1  0  1   1  0  1  0  1     0
+BuildTwoSidedF         8 1.0 5.0000e-05 5.6 0.00e+00 0.0 0.0e+00 0.0e+00 8.0e+00  0  0  0  0  1   0  0  0  0  1     0
+MatMult              378 1.0 1.6520e-03 3.1 9.57e+05 1.1 3.0e+03 1.3e+02 0.0e+00 16 11 94 91  0  16 11 94 91  0  2182
+MatSolve             378 1.0 7.9200e-04 1.1 9.32e+05 1.1 0.0e+00 0.0e+00 0.0e+00 11 11  0  0  0  11 11  0  0  0  4426
+MatLUFactorNum         7 1.0 5.9000e-05 1.1 1.84e+04 1.1 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0  1182
+MatILUFactorSym        1 1.0 8.0000e-06 1.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatAssemblyBegin       8 1.0 6.2000e-05 3.0 0.00e+00 0.0 0.0e+00 0.0e+00 8.0e+00  1  0  0  0  1   1  0  0  0  1     0
+MatAssemblyEnd         8 1.0 3.9500e-04 1.0 0.00e+00 0.0 1.6e+01 3.5e+01 5.0e+00  6  0  0  0  1   6  0  0  0  1     0
+MatGetRowIJ            1 1.0 0.0000e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatGetOrdering         1 1.0 4.0000e-06 1.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+DMCreateMat            1 1.0 1.0240e-03 1.0 0.00e+00 0.0 1.6e+01 3.5e+01 8.0e+00 15  0  0  0  1  15  0  0  0  1     0
+DMView                 1 1.0 0.0000e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFSetGraph             3 1.0 7.0000e-06 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFSetUp                3 1.0 5.2000e-05 1.6 0.00e+00 0.0 4.8e+01 3.5e+01 3.0e+00  1  0  1  0  0   1  0  1  0  0     0
+SFPack               396 1.0 7.9000e-05 2.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0     0
+SFUnpack             396 1.0 1.3000e-05 1.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecView                3 1.0 6.0000e-06 1.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecDot                 7 1.0 3.0000e-06 1.0 4.04e+03 1.1 0.0e+00 0.0e+00 7.0e+00  0  0  0  0  1   0  0  0  0  1  5073
+VecMDot              362 1.0 1.7740e-03 3.4 2.98e+06 1.1 0.0e+00 0.0e+00 3.6e+02 13 35  0  0 43  13 35  0  0 44  6332
+VecNorm              399 1.0 2.5400e-04 1.3 2.30e+05 1.1 0.0e+00 0.0e+00 4.0e+02  3  3  0  0 47   3  3  0  0 48  3407
+VecScale             378 1.0 3.3000e-05 1.2 1.09e+05 1.1 0.0e+00 0.0e+00 0.0e+00  0  1  0  0  0   0  1  0  0  0 12474
+VecCopy               35 1.0 6.0000e-06 6.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecSet                23 1.0 3.0000e-06 1.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecAXPY               27 1.0 6.0000e-06 3.0 1.56e+04 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0  9801
+VecWAXPY              10 1.0 1.0000e-06 0.0 3.76e+03 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 14157
+VecMAXPY             378 1.0 1.5600e-04 1.2 3.20e+06 1.1 0.0e+00 0.0e+00 0.0e+00  2 38  0  0  0   2 38  0  0  0 77193
+VecScatterBegin      396 1.0 1.9500e-04 1.5 0.00e+00 0.0 3.2e+03 1.3e+02 0.0e+00  2  0 98 95  0   2  0 98 95  0     0
+VecScatterEnd        396 1.0 1.2870e-03 7.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00 10  0  0  0  0  10  0  0  0  0     0
+VecReduceArith        14 1.0 3.0000e-06 0.0 8.08e+03 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 10145
+VecReduceComm          7 1.0 2.5000e-05 6.2 0.00e+00 0.0 0.0e+00 0.0e+00 7.0e+00  0  0  0  0  1   0  0  0  0  1     0
+VecNormalize         378 1.0 2.9800e-04 1.1 3.27e+05 1.1 0.0e+00 0.0e+00 3.8e+02  4  4  0  0 45   4  4  0  0 46  4139
+KSPSetUp               7 1.0 4.9000e-05 5.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+KSPSolve               7 1.0 3.7700e-03 1.0 8.39e+06 1.1 3.0e+03 1.3e+02 7.4e+02 54 99 92 89 88  54 99 92 89 90  8384
+KSPGMRESOrthog       362 1.0 1.9770e-03 2.7 5.97e+06 1.1 0.0e+00 0.0e+00 3.6e+02 16 71  0  0 43  16 71  0  0 44 11374
+SNESSolve              1 1.0 4.2860e-03 1.0 8.45e+06 1.1 3.2e+03 1.3e+02 7.8e+02 61 100 98 95 92  61 100 98 95 94  7429
+SNESSetUp              1 1.0 1.0300e-03 1.0 0.00e+00 0.0 1.6e+01 3.5e+01 8.0e+00 15  0  0  0  1  15  0  0  0  1     0
+SNESFunctionEval      11 1.0 9.6000e-05 1.1 0.00e+00 0.0 8.8e+01 1.3e+02 0.0e+00  1  0  3  3  0   1  0  3  3  0     0
+SNESJacobianEval       7 1.0 1.9200e-04 1.2 0.00e+00 0.0 5.6e+01 1.3e+02 7.0e+00  3  0  2  2  1   3  0  2  2  1     0
+SNESLineSearch         7 1.0 1.3300e-04 1.2 4.34e+04 1.1 1.4e+02 1.3e+02 3.1e+01  2  1  4  4  4   2  1  4  4  4  1230
+PCSetUp                7 1.0 6.9000e-05 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0     0
+PCSetUpOnBlocks        7 1.0 9.3000e-05 1.1 1.84e+04 1.1 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0   750
+PCApply              378 1.0 9.1300e-04 1.1 9.32e+05 1.1 0.0e+00 0.0e+00 0.0e+00 12 11  0  0  0  12 11  0  0  0  3839
+PCApplyOnBlocks      378 1.0 8.7100e-04 1.1 9.32e+05 1.1 0.0e+00 0.0e+00 0.0e+00 12 11  0  0  0  12 11  0  0  0  4024
+------------------------------------------------------------------------------------------------------------------------
+
+Object Type          Creations   Destructions. Reports information only for process 0.
+
+--- Event Stage 0: Main Stage
+
+           Container     3              3
+    Distributed Mesh     2              2
+              Matrix     7              7
+           Index Set    11             11
+   IS L to G Mapping     2              2
+   Star Forest Graph     7              7
+     Discrete System     2              2
+           Weak Form     2              2
+              Vector    58             58
+                SNES     1              1
+              DMSNES     1              1
+      SNESLineSearch     1              1
+       Krylov Solver     2              2
+     DMKSP interface     1              1
+      Preconditioner     2              2
+              Viewer     2              2
+========================================================================================================================
+Average time to get PetscTime(): 0.
+Average time for MPI_Barrier(): 0.0003066
+Average time for zero size MPI_Send(): 1e-06
+#PETSc Option Table entries:
+-da_grid_x 9 # (source: command line)
+-da_grid_y 9 # (source: command line)
+-da_refine 2 # (source: command line)
+-ksp_atol 1.e-14 # (source: command line)
+-ksp_monitor # (source: command line)
+-ksp_rtol 1.e-12 # (source: command line)
+-log_view # (source: command line)
+-rct_gamma 100 # (source: command line)
+-rct_linear_f false # (source: command line)
+-rct_p 3 # (source: command line)
+-snes_monitor # (source: command line)
+#End of PETSc Option Table entries
+Compiled without FORTRAN kernels
+Compiled with full precision matrices (default)
+sizeof(short) 2 sizeof(int) 4 sizeof(long) 8 sizeof(void*) 8 sizeof(PetscScalar) 8 sizeof(PetscInt) 4
+Configure options: --with-cc=mpicc --with-cxx=mpicxx --with-fc=mpif90 --with-debugging=0 --with-shared-libraries=1 --COPTFLAGS="-O3 -march=native" --CXXOPTFLAGS="-O3 -march=native" --FOPTFLAGS="-O3 -march=native" --download-hdf5 --download-metis --download-parmetis --download-hypre --download-scalapack --download-mumps --with-petsc4py
+-----------------------------------------
+Libraries compiled on 2026-02-24 18:35:38 on paullabs-MacBook-Air.local
+Machine characteristics: macOS-15.0-arm64-arm-64bit-Mach-O
+Using PETSc directory: /Users/paullab/codes/APMA4302/petsc
+Using PETSc arch: apma4302-pkgs-opt
+-----------------------------------------
+
+Using C compiler: mpicc  -fPIC -Wall -Wwrite-strings -Wno-unknown-pragmas -Wconversion -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -fstack-protector -fno-stack-check -Qunused-arguments -fvisibility=hidden -O3 -march=native 
+Using Fortran compiler: mpif90  -fPIC -Wall -ffree-line-length-none -ffree-line-length-0 -Wno-lto-type-mismatch -Wno-unused-dummy-argument -O3 -march=native   
+-----------------------------------------
+
+Using include paths: -I/Users/paullab/codes/APMA4302/petsc/include -I/Users/paullab/codes/APMA4302/petsc/apma4302-pkgs-opt/include
+-----------------------------------------
+
+Using C linker: mpicc
+Using Fortran linker: mpif90
+Using libraries: -Wl,-rpath,/Users/paullab/codes/APMA4302/petsc/apma4302-pkgs-opt/lib -L/Users/paullab/codes/APMA4302/petsc/apma4302-pkgs-opt/lib -lpetsc -Wl,-rpath,/Users/paullab/codes/APMA4302/petsc/apma4302-pkgs-opt/lib -L/Users/paullab/codes/APMA4302/petsc/apma4302-pkgs-opt/lib -Wl,-rpath,/opt/homebrew/Cellar/open-mpi/5.0.9/lib -L/opt/homebrew/Cellar/open-mpi/5.0.9/lib -Wl,-rpath,/opt/homebrew/Cellar/gcc/15.2.0/lib/gcc/current/gcc/aarch64-apple-darwin24/15 -L/opt/homebrew/Cellar/gcc/15.2.0/lib/gcc/current/gcc/aarch64-apple-darwin24/15 -Wl,-rpath,/opt/homebrew/Cellar/gcc/15.2.0/lib/gcc/current/gcc -L/opt/homebrew/Cellar/gcc/15.2.0/lib/gcc/current/gcc -Wl,-rpath,/opt/homebrew/Cellar/gcc/15.2.0/lib/gcc/current -L/opt/homebrew/Cellar/gcc/15.2.0/lib/gcc/current -lHYPRE -ldmumps -lmumps_common -lpord -lpthread -lscalapack -llapack -lblas -lhdf5_hl -lhdf5 -lparmetis -lmetis -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi -lgfortran -lemutls_w -lheapt_w -lgfortran -lquadmath -lc++
+-----------------------------------------
+

@@ -6,7 +6,7 @@
 
 # setup specifics (must include rct_ prefix — matches PetscOptionsBegin(..., "rct_", ...))
 -rct_gamma 0
--rct_linear_f false
+-rct_linear_f true
 # -rct_p 3
 
 # linear solver specifics
@@ -16,3 +16,6 @@
 
 # non-linear solver specifics (SNES)
 -snes_monitor
+
+# Timing for writeup (Problem 5): compare with a run without -log_view or save to file
+-log_view
