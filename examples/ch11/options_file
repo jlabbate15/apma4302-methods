@@ -1,0 +1,6 @@
+-da_refine 5
+-adv_problem rotation
+-adv_initial box
+-ts_max_time 6.283185307179586
+
+

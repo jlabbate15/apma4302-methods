@@ -56,3 +56,45 @@ Have installed:
   * HYPRE a robust algebraic multigrid package
   * petsc4py: python bindings for petsc and for interacting with petsc c codes with python
   * HDF5:  An advanced parallel and portable IO system for that can be imported in various visualization packages (and python)
+
+## Building Firedrake
+
+* To configure and build petsc for use with Firedrake, we will roughly follow the instructions at <https://www.firedrakeproject.org/firedrake/install.html>
+  * **Add some packages with `brew`** (on MacOS)
+    * basic instructions are included in the install script
+   `arch-firedrake-default.sh`
+    * temporarily disable brew autoupdate using
+  `export HOMEBREW_NO_AUTO_UPDATE=1` in your shell
+    * `brew install install bison fftw hwloc`
+  * **clone your current anaconda environment**
+    * either use the anaconda navigator or
+    * `conda create --name firedrake --clone OLD_ENV_NAME`
+    where `OLD_ENV_NAME` could be `base` or any environment your happy with but python version should be around 3.13
+    * `conda activate firedrake`
+  * **Build a new petsc arch**
+    * move `arch-firedrake-default.sh` to your base petsc directory
+    * build a new petsc with
+
+      ```bash:
+      cd $PETSC_DIR
+      . ./arch-firedrake-default.sh
+      make all
+      make check
+
+  * **set up your environment for PETSc**
+    * You might need to add a path for `bison`
+  * **Install firedrake into your firedrake installation**
+    * download two firedrake repos into wherever you keep your repos
+
+      ``` bash
+      git clone https://github.com/firedrakeproject/firedrake.git .
+      git clone -b OptionsManager_fix https://github.com/mspieg/firedrake-ts.git
+    * pip install `firedrake` and `firedrake-ts` from the repos
+
+      * starting in the directory that contain the two repos
+
+      ```bash
+      python -m pip install ./firedrake
+      python -m pip install ./firedrake-ts
+
+  * Cross your fingers that everything is working: go look at the example scripts e.g. `examples/firedrake/hemlholtz/helmholtz.py`
