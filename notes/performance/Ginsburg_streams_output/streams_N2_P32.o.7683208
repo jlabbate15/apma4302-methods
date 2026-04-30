@@ -1,0 +1,43 @@
+Removing mkl version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+Removing compiler-rt version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+Loading mkl version 2023.1.0
+Loading compiler-rt version 2023.1.0
+32
+mpicc -o MPIVersion.o -c -fPIC -Wall -Wwrite-strings -Wno-unknown-pragmas -Wno-lto-type-mismatch -Wno-stringop-overflow -fstack-protector -fvisibility=hidden -O3 -march=native  -I/burg-archive/home/mws6/repos/gitlab/petsc/include -I/burg-archive/home/mws6/repos/gitlab/petsc/apma4302-pkgs-opt/include    MPIVersion.c
+Running streams with '/usr/mpi/gcc/openmpi-4.1.7a1/bin/mpiexec --oversubscribe ' using 'NPMAX=32' 
+1  14178.6765   Rate (MB/s) 1
+2  25181.2420   Rate (MB/s) 1.77599 
+3  42436.3308   Rate (MB/s) 2.99296 
+4  56476.4518   Rate (MB/s) 3.98319 
+5  62548.9030   Rate (MB/s) 4.41147 
+6  75897.5208   Rate (MB/s) 5.35293 
+7  89158.2293   Rate (MB/s) 6.28818 
+8 101188.8317   Rate (MB/s) 7.13668 
+9  94059.3717   Rate (MB/s) 6.63385 
+10 104929.3915   Rate (MB/s) 7.40049 
+11 115270.3910   Rate (MB/s) 8.12983 
+12 125776.5062   Rate (MB/s) 8.87081 
+13 111704.1191   Rate (MB/s) 7.8783 
+14 120596.6368   Rate (MB/s) 8.50548 
+15 128362.8475   Rate (MB/s) 9.05322 
+16 135288.7442   Rate (MB/s) 9.54169 
+17 145508.5049   Rate (MB/s) 10.2625 
+18 155962.3556   Rate (MB/s) 10.9998 
+19 161779.6980   Rate (MB/s) 11.4101 
+20 170867.0900   Rate (MB/s) 12.051 
+21 174948.5360   Rate (MB/s) 12.3388 
+22 188121.9230   Rate (MB/s) 13.2679 
+23 195607.0727   Rate (MB/s) 13.7958 
+24 204055.1280   Rate (MB/s) 14.3917 
+25 216862.5790   Rate (MB/s) 15.295 
+26 222327.6735   Rate (MB/s) 15.6804 
+27 223333.1495   Rate (MB/s) 15.7513 
+28 235034.9455   Rate (MB/s) 16.5766 
+29 251100.5922   Rate (MB/s) 17.7097 
+30 255545.3337   Rate (MB/s) 18.0232 
+31 266010.5811   Rate (MB/s) 18.7613 
+32 279825.1326   Rate (MB/s) 19.7356 
+------------------------------------------------
+See graph in the file src/benchmarks/streams/MPIscaling.png
