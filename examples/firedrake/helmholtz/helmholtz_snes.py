@@ -6,7 +6,7 @@
 #
 # .. math::
 #
-#    -\nabla^2 u + u &= f
+#    -\nabla^2 u + u^n &= f
 #
 #    \nabla u \cdot \vec{n} &= 0 \quad \textrm{on}\ \Gamma
 #
@@ -77,11 +77,13 @@ v = TestFunction(V)
 
 f = Function(V)
 x, y = SpatialCoordinate(mesh)
-f.interpolate((1+8*pi*pi)*sin(x*pi*2)*sin(y*pi*2))
+
+# exponent in non-linear term
+n = 4
+f.interpolate((8*pi*pi)*sin(x*pi*2)*sin(y*pi*2) + (sin(x*pi*2) * sin(y*pi*2))**n)
 
 # We can now define the weak form of the residual function F(u)::
-
-F = (inner(grad(u), grad(v)) + inner(u, v)) * dx - inner(f, v) * dx
+F = (inner(grad(u), grad(v)) + inner(u**n, v)) * dx - inner(f, v) * dx
 
 # For this solution we will need to implement dirichlet boundary conditions, so we set the value of the solution to be zero on the boundary of the domain::
 
@@ -92,12 +94,15 @@ bc = DirichletBC(V, 0, "on_boundary")
 parameters = {'ksp_type': 'cg', 
               'pc_type': 'mg',
               'pc_factor_mat_solver_type': 'mumps',
+              'snes_type': 'newtonls',
               'snes_monitor': None,
               'snes_converged_reason': None,
-              'snes_rtol': 1e-6,
+              'snes_rtol': 1e-8,
+              'snes_atol': 1e-10,
               'ksp_monitor': None,
               'ksp_converged_reason': None,
-              'ksp_rtol': 1e-6}
+              'ksp_rtol': 1e-6,
+              'ksp_atol': 1e-10}
 
 print("\nSolving {}x{} non-Linear system in Q{} with parameters: {}".
       format(N_fine, N_fine, p, json.dumps(parameters, indent=4)))

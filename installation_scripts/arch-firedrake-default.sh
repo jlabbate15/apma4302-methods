@@ -13,9 +13,11 @@
 #     - bison
 #     - fftw
 #     - hwloc
+#     - ninja
+#     - zlib
 #   If you have not installed these dependencies, you can do so with the following command:
 #     export HOMEBREW_NO_AUTO_UPDATE=1
-#     brew install bison fftw hwloc 
+#     brew install bison fftw hwloc ninja zlib
 #   Additional packages will be downloaded and built automatically by the PETSc configuration script.
 #   Note that this script is intended to be a starting point for a PETSc configuration that works well with Firedrake. Depending on your specific needs and system configuration, 
 #   you may need to modify the options passed to the `configure` script.
@@ -26,6 +28,7 @@ echo "Starting Firedrake PETSc configuration..."
 
 export PETSC_DIR=$(pwd)
 export PETSC_ARCH=arch-firedrake-default
+
 
 ./configure \
   --with-cc=mpicc \
@@ -54,8 +57,18 @@ export PETSC_ARCH=arch-firedrake-default
   --download-hypre \
   --download-scalapack \
   --download-mumps-avoid-mpi-in-place \
-  --download-mumps 
+  --download-mumps \
+  --with-petsc4py 
 
-echo "Configuration completed successfully!"
+
+# set environment script
+
+cat <<EOL > set_firedrake_petsc_env.sh
+#!/bin/bash
+export PETSC_DIR=$(pwd)
+export PETSC_ARCH=arch-firedrake-default
+export PYTHONPATH=\$PETSC_DIR/\$PETSC_ARCH/lib:\$PYTHONPATH
+export PATH=/opt/homebrew/opt/bison/bin:\$PATH
+EOL
 
 #--with-c2html=0 --with-debugging=0 --with-fortran-bindings=0 --with-shared-libraries=1 --with-strict-petscerrorcode PETSC_ARCH=arch-firedrake-default --COPTFLAGS='-O3 -march=native -mtune=native' --CXXOPTFLAGS='-O3 -march=native -mtune=native' --FOPTFLAGS='-O3' -download-mumps-avoid-mpi-in-place --download-bison --with-fftw-dir=/opt/homebrew --with-hdf5-dir=/opt/homebrew --with-hwloc-dir=/opt/homebrew --with-metis-dir=/opt/homebrew --download-mumps --download-netcdf --with-pnetcdf-dir=/opt/homebrew --download-ptscotch --with-scalapack-dir=/opt/homebrew --with-suitesparse-dir=/opt/homebrew --download-superlu_dist --with-zlib-dir=/opt/homebrew/opt/zlib --download-hypre

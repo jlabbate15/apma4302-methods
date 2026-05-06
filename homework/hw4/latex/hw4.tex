@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{sourcecodepro}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+% Header setup
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Name: \underline{\hspace{3cm}}}
+\lhead{APMA 4302 - Methods}
+\cfoot{\thepage}
+
+\begin{document}
+\lstset{basicstyle=\ttfamily}
+
+\title{APMA 4302 Methods - Homework 4: Solution of coupled multiphysics PDEs with Firedrake and PETSc}
+\author{Marc Spiegelman}
+\date{\today}
+\maketitle
+
+Here we will solve the coupled nonlinear system of dimensionless equations governing infinite prandtl number thermal convection in a 2D box, of height $H$which can be written as:
+\begin{align}
+  \frac{\partial T}{\partial t} + \mathbf{v} \cdot \nabla T & = \frac{1}{Ra}\mathbf{\nabla}^2 T  \label{eq:temp}\\
+  -\nabla^2\mathbf{v} + \mathbf{\nabla} p & = T\hat{\mathbf{j}} \label{eq:stokes}\\
+  \mathbf{\nabla} \cdot \mathbf{v} & =  0 \label{eq:incomp}
+\end{align}
+which couples advection diffusion of temperature, $T$, (Eq. \eqref{eq:temp}) with incompressible Stoke's flow for the velocity, $\mathbf{v}$ and pressure, $p$ (Eqs.\eqref{eq:stokes} and \eqref{eq:incomp}). Here $\hat{\mathbf{j}}$ is the unit vector in the vertical direction (pointing upward). When non-dimensionalized, the equations are  governed by a single dimensionless parameter, the Raleigh Number
+\begin{displaymath}
+  Ra = \frac{\rho_0\alpha g \Delta T H^3}{\kappa \eta },
+\end{displaymath}
+which is the ratio of buoyancy forces to viscous and thermal diffusion forces. Larger values of $Ra$ correspond to stronger buoyancy forces relative to viscous and thermal diffusion forces and drive more vigorous convection.For a given geometry and boundary conditions, there exists a critical value of $Ra$ below which no convection occurs, and the system undergoes a bifurcation from a stable conductive state to an unstable convective state.  
+
+
+In this homework, we will solve the nonlinear system of equations for a range of $Ra$ values,  in a 2D square box with appropriate boundary conditions. But first we will do some preliminary work to simplify the problem and test our solvers. 
+
+Do the following:
+\begin{enumerate}
+  \item (\textbf{10 pts}) \textbf{Rewrite the governing equations in stream-function/vorticity form}. In 2-D,  we can write the velocity field in terms of a scalar stream function $\psi$ 
+  \begin{displaymath} 
+    \mathbf{v} = \nabla \times (\psi \hat{\mathbf{k}}),
+  \end{displaymath}
+   where $\hat{\mathbf{k}}$ is the unit vector normal to the plane of flow and the incompressibility condition is automatically satisfied.  In addition, the vorticity is defined as 
+   \begin{displaymath}
+     \omega \hat{\mathbf{k}}= \nabla \times \mathbf{v}
+   \end{displaymath}
+    With these definitions, show that governing equations (Eqs. \ref{eq:temp}--\ref{eq:incomp}) can be rewritten as 
+    \begin{align}
+      \frac{\partial T}{\partial t} + \mathbf{v} \cdot \nabla T & = \frac{1}{Ra}\mathbf{\nabla}^2 T  \label{eq:temp2}\\
+      -\nabla^2\omega & = \frac{\partial T}{\partial x} \label{eq:vort} \\
+      -\nabla^2 \psi & = \omega \label{eq:stream}
+    \end{align}
+  \item (\textbf{10 pts}) \textbf{Explore fieldsplit preconditioners for solving the  biharmonic equation in PETSc and Firedrake}. I have provided two codes that solve just the biharmonic equation (Eqs. \eqref{eq:vort} and \eqref{eq:stream}) with a manufactured solution. The first code is written in C using the PETSc library (\texttt{biharm.c}) for finite differences on a \texttt{DMDA} and the second code is written in Python using the Firedrake library (\texttt{biharm.py}) for finite elements. Both codes have options for monolithic and  fieldsplit preconditioners to solve the coupled system of equations.  The Petsc C code includes three options files for different solver options. 
+  \begin{enumerate}
+    \item Compare convergence rates and run times for the three options files and the c code. You can use 
+    \begin{verbatim}   
+      ./biharm -options_file <file> -log_view | grep SNESSolve
+    \end{verbatim}
+    to run the code and get detailed timing information on the SNES solver (and other functions) 
+    \item Repeat the exercise for the firedrake code using the same set of options.
+    \item pick one solver set and compare the output log files for the two codes and determine where the principle differences in run time are coming from. 
+  \end{enumerate}
+  \item (\textbf{5 pts}) Write a new firedrake code based on \texttt{biharm.py} to solve the biharmonic equation (Eqs. \eqref{eq:temp2}--\eqref{eq:stream}) but with a RHS function $f(x) = \frac{\partial T}{\partial x}$ and \
+  \begin{equation}
+    T(x,y) = (1 - y) + A\cos(\pi x) \label{eq:Tinit}
+  \end{equation}
+  with $A=0.1$. (hint: if \texttt{T = Function(V)} is a firedrake \texttt{ufl} function, then \texttt{T.dx(0)} evaluates symbolically as $\frac{\partial T}{\partial x}$). Just provide a paraview figure showing the temperature field, with contours of the stream function and the velocity $v=\mathbb{\nabla}\times\psi\hat{\mathbf{k}}$ superposed.
+  \item (\textbf{20 pts}) Write a firedrake program \texttt{convection.py} that solves the full system of equations as an implicit DAE problem using \texttt{firedrake-ts}.  You can start with your temperature driven biharmonic solver and the \texttt{firedrake-ts} code \texttt{heat.py} and combine them.  The specific problem is to solve Eqs. (\ref{eq:temp2}-\ref{eq:stream}) with Boundary conditions
+  \begin{eqnarray*}
+    T(x,0,t) = 1 & T(x,1,t) = 0\\
+    \frac{\partial T}{\partial x}(0,y,t) = 0 & \frac{\partial T}{\partial x}(1,y,t)  = 0\\
+    \omega = 0 & \psi = 0\quad\mathrm{on}\, \partial\Omega \\
+  \end{eqnarray*}
+  and initial condition Eq. \eqref{eq:Tinit} as a monolithic DAE $F(u,\dot(u),t)=0$.  There is no analytic solution to this problem, but you should calculate the Nusselt Number 
+  \begin{displaymath}
+    Nu = -\frac{\int_0^1 \partial_y T(x, y=1)}{\int_0^1 \partial_y T(x, y=0)}
+  \end{displaymath}
+  which is a measure of the convective heat flux to the conductive heat flux (for no-convection $Nu=1$)
+  \begin{enumerate}
+    \item Start with $Ra=10^2$ on a $64\times64$ Q1 mesh, use a bdf-2 integrator and a monolithic direct solver with mumps and solve to a maximum time $t=100000$.  Show that for this Ra, the steady state is non-convective.
+    \item Repeat the exercise for $Ra=10^4,10^5,10^6$
+    \item For $Ra=10^4$, plot $Nu$ vs mesh size for $N\times N$ meshes with $N=16,32,64,128$ and compare to the results of Blankenbach benchmark 1 which predicts $Nu=4.884$.  Discuss.
+   \end{enumerate}
+   \item \textbf{Extra credit themes and variations:} (not recommended, just for fun...better to work on your project)
+   \begin{enumerate}
+    \item Do full convergence study for $Ra=10^4,10^5,10^6$
+    \item Rewrite the problem as a Petsc c code for finite difference on a DMDA using TS (with fieldsplit block precondtioners)
+    \item Use Finite Difference in Time/Finite elements in space  with a 2nd order Crank-Nicholson discrization and write the problem as a SNES for each time step and use plain firedrake, but allow block pre-conditioners
+   \end{enumerate}
+  \end{enumerate}
+
+  
+  \end{document}

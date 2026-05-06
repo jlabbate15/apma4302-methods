@@ -58,7 +58,7 @@ mesh = UnitSquareMesh(N, N, quadrilateral=True)
 # We need to decide on the function space in which we'd like to solve the
 # problem. Let's use piecewise  Qp linear functions continuous between
 # elements::
-p = 1
+p = 2
 V = FunctionSpace(mesh, "CG", p)
 
 # We'll also need the test and trial functions corresponding to this
