@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<VTKFile type="Collection" version="0.1" byte_order="LittleEndian">
+<Collection>
+<DataSet timestep="0" file="biharm_hw4_q3/biharm_hw4_q3_0.vtu" />
+</Collection>
+</VTKFile>

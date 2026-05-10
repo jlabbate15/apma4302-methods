@@ -61,38 +61,87 @@ u.subfunctions[1].interpolate(0.)
 bcs = [DirichletBC(ME.sub(0), 0., "on_boundary"),
        DirichletBC(ME.sub(1), 0., "on_boundary")]
 
-pc = "monolithic" 
-pc = "fieldsplit"
+# # pc = "monolithic" 
+# pc = "fieldsplit"
+# params_general = {
+#     "snes_type": "ksponly",
+#     "ksp_rtol": 1e-6,
+#     "ksp_atol": 1e-10,
+#     "snes_monitor": None,
+#     "ksp_monitor": None
+# }  
+# if pc == "monolithic": 
+#     params = {  
+#         "ksp_type": "gmres",
+#         "pc_type": "lu",
+#         "pc_factor_mat_solver_type": "mumps"
+#     } 
+# elif pc == "fieldsplit":
+#     params = {
+#         "ksp_type": "fgmres",
+#         "pc_type": "fieldsplit",
+#         "pc_fieldsplit_type": "multiplicative",  # Options: additive, multiplicative, schur
+#         # Nested dictionaries for solver settings on each block
+#         "fieldsplit_0": {
+#             "ksp_type": "preonly",
+#             "pc_type": "mg",
+#             "pc_factor_mat_solver_type": "mumps"
+#         },
+#         "fieldsplit_1": {
+#             "ksp_type": "preonly",
+#             "pc_type": "mg",
+#             "pc_factor_mat_solver_type": "mumps"
+#         }
+#     } 
+
+
+pc = "direct"   # "direct", "split_direct", "split_mg"
+
 params_general = {
     "snes_type": "ksponly",
     "ksp_rtol": 1e-6,
     "ksp_atol": 1e-10,
-    "snes_monitor": None,
-    "ksp_monitor": None
-}  
-if pc == "monolithic": 
-    params = {  
-        "ksp_type": "gmres",
+    "ksp_monitor": None,
+    "log_view": None,
+}
+
+if pc == "direct":
+    params = {
+        "ksp_type": "preonly",
         "pc_type": "lu",
-        "pc_factor_mat_solver_type": "mumps"
-    } 
-elif pc == "fieldsplit":
+        "pc_factor_mat_solver_type": "mumps",
+    }
+
+elif pc == "split_direct":
     params = {
         "ksp_type": "fgmres",
         "pc_type": "fieldsplit",
-        "pc_fieldsplit_type": "multiplicative",  # Options: additive, multiplicative, schur
-        # Nested dictionaries for solver settings on each block
-        "fieldsplit_0": {
-            "ksp_type": "preonly",
-            "pc_type": "mg",
-            "pc_factor_mat_solver_type": "mumps"
-        },
-        "fieldsplit_1": {
-            "ksp_type": "preonly",
-            "pc_type": "mg",
-            "pc_factor_mat_solver_type": "mumps"
-        }
-    } 
+        "pc_fieldsplit_type": "multiplicative",
+        "fieldsplit_0_ksp_type": "preonly",
+        "fieldsplit_0_pc_type": "lu",
+        "fieldsplit_0_pc_factor_mat_solver_type": "mumps",
+        "fieldsplit_1_ksp_type": "preonly",
+        "fieldsplit_1_pc_type": "lu",
+        "fieldsplit_1_pc_factor_mat_solver_type": "mumps",
+    }
+
+elif pc == "split_mg":
+    params = {
+        "ksp_type": "fgmres",
+        "pc_type": "fieldsplit",
+        "pc_fieldsplit_type": "multiplicative",
+        "fieldsplit_0_ksp_type": "preonly",
+        "fieldsplit_0_pc_type": "mg",
+        "fieldsplit_0_pc_mg_levels": 8,
+        "fieldsplit_0_pc_mg_galerkin": "none",
+        "fieldsplit_1_ksp_type": "preonly",
+        "fieldsplit_1_pc_type": "mg",
+        "fieldsplit_1_pc_mg_levels": 8,
+        "fieldsplit_1_pc_mg_galerkin": "none",
+    }
+
+params.update(params_general)
+
 
 params.update(params_general)
 #print(params)
