@@ -1,3 +1,9 @@
 [submodule "saarelma-conner-ped"]
 	path = saarelma-conner-ped
 	url = https://github.com/jlabbate15/saarelma-conner-ped.git
+[submodule "final_project_v2"]
+	path = final_project_v2
+	url = https://github.com/jlabbate15/saarelma-conner-ped.git
+[submodule "saarelma-connor-ped"]
+	path = saarelma-connor-ped
+	url = https://github.com/jlabbate15/saarelma-conner-ped.git
